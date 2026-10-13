@@ -1,0 +1,97 @@
+generated: '2026-10-13'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 7
+  own: 6
+  other_domain: 0
+  platform: 1
+  roles:
+  - api
+  - other
+  - source
+  - website
+hosts:
+- host: api.internet2.edu
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: internet2.edu
+  role: api
+  relation: own
+- host: console.internet2.edu
+  found_by:
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: internet2.edu
+  role: other
+  relation: own
+- host: events.internet2.edu
+  found_by:
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: internet2.edu
+  role: other
+  relation: own
+- host: github.com
+  found_by:
+  - pointer
+  - apis[]
+  types:
+  - GitHubOrganization
+  serves:
+  - docs
+  registrable_domain: github.com
+  role: source
+  relation: platform
+- host: internet2.edu
+  found_by:
+  - pointer
+  - apis[]
+  - probed
+  - contract-discovery
+  - well-known
+  types:
+  - TermsOfService
+  - SignUp
+  - Security
+  - Roadmap
+  - PrivacyPolicy
+  - Newsroom
+  - Website
+  serves:
+  - docs
+  registrable_domain: internet2.edu
+  role: website
+  relation: own
+- host: noc.net.internet2.edu
+  found_by:
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: internet2.edu
+  role: other
+  relation: own
+- host: www2.internet2.edu
+  found_by:
+  - probed
+  - site-links
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: internet2.edu
+  role: other
+  relation: own

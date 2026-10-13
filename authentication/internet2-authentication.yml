@@ -1,0 +1,12 @@
+generated: '2026-10-13'
+method: derived
+source: openapi/comanage-registry-restapiv1.yml
+summary:
+  types:
+  - http
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  sources:
+  - openapi/comanage-registry-restapiv1.yml

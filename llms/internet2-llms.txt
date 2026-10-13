@@ -1,0 +1,39 @@
+# Stova
+
+> Stova (formerly Aventri / eTouches) is an enterprise event management platform covering the full event lifecycle: registration, event websites, email marketing, surveys, abstracts, meetings, budgets, venue sourcing, on-site check-in, badging, lead retrieval, mobile apps, and reporting. It exposes a RESTful APIv2 with region-specific hosts (NA, EMEA, APAC) for data residency.
+
+**Key Facts**
+
+- **Modular Architecture** — Purpose-built modules (Registration, Websites, Email Marketing, Surveys, Abstracts, Meetings, Budgets, Projects, Venue Sourcing, Mobile Apps, On-site, Lead Retrieval, Reporting) that can be adopted independently.
+- **Region-Specific API Hosts** — Dedicated hosts for NA, EMEA, and APAC support data residency compliance and lower latency.
+- **APIv2** — RESTful API with JSON and XML support, organized by platform module.
+- **Authentication** — Master and scoped API keys with IP-range restrictions, plus token-based auth.
+- **Webhooks** — Registration and event-level triggers for create/modify/cancel/RSVP events without polling.
+- **Data Services** — Bulk, paginated data endpoints for large datasets and reporting use cases.
+- **Integrations** — Native integrations with Salesforce, Marketo, Concur, PayPal, and SSO (SAML/OIDC).
+
+These facts make Stova suitable for enterprise and mid-market organizations running complex, multi-region event programs that need integrations with existing CRM, marketing, and travel systems.
+
+## API Documentation
+
+- [Full API Reference](https://developer.aventri.com/): Complete single-page reference with request/response examples for every function
+- [API Introduction & Setup](https://developer.aventri.com/#introduction): Overview of the APIv2, how docs are organized by platform module
+- [Getting an API Key & Authorization](https://developer.aventri.com/#setup): API key types (master vs non-master), key configuration, access token flow
+- [Rate Limits](https://developer.aventri.com/#rate-limits): Concurrent request limits and payload size constraints
+- [API Endpoints & Regions](https://developer.aventri.com/#api-endpoints): Regional endpoint hosts for NA, EMEA, and APAC
+- [Global API Functions](https://developer.aventri.com/#global-api-functions): Authorization, contacts, speakers, events listing/search, sessions, folders, languages, currencies
+- [Registration API Functions](https://developer.aventri.com/#registration-api-functions): Attendees (create, update, list), check-in, pre-loads, sessions, hotels, travel, event cloning
+- [Marketing API Functions](https://developer.aventri.com/#marketing-api-functions): Mailing lists and marketing email management
+- [Networking API Functions](https://developer.aventri.com/#networking-api-functions): Meetings and attendee networking
+- [Surveys API Functions](https://developer.aventri.com/#surveys-api-functions): Survey data access
+- [Abstracts API Functions](https://developer.aventri.com/#abstracts-api-functions): Abstract/submission management (eSelect)
+- [Data Services](https://developer.aventri.com/#data-services): Bulk, paginated data access
+
+## Webhooks
+
+- [API Registration Triggers](https://developer.aventri.com/#api-registration-triggers): Automatic notifications for registrations, modifications, cancellations, and RSVPs
+- [API Event Triggers](https://developer.aventri.com/#api-event-triggers): Event-level trigger notifications
+
+## Optional
+
+- [Stova website](https://www.stova.io): Product overview, solutions, and contact information

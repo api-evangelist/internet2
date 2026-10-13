@@ -1,0 +1,285 @@
+openapi: 3.2.0
+info:
+  title: Internet2 Co People API
+  version: 0.4.0
+  contact:
+    name: COmanage Project
+    url: https://spaces.at.internet2.edu/display/COmanage/About+the+COmanage+Project
+    email: comanage-users@internet2.edu
+  license:
+    name: APACHE LICENSE, VERSION 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  description: 'Operations tagged Co People across 2 of this provider''s published API definitions: internet2-restapiv1-openapi.yml, comanage-registry-restapiv1.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://localhost/registry
+  description: 'Most deployments serve Registry using the default path /registry. If your deployment changes the
+
+    default path you must adjust the relative URIs.
+
+    '
+security:
+- basicAuth: []
+tags:
+- name: Co People
+paths:
+  /co_people/{id}.json:
+    delete:
+      summary: Remove a person
+      description: 'Remove a CO Person. This method will also delete related data, such as
+
+        CoPersonRoles, EmailAddresses, and Identifiers. A person must be removed
+
+        from any COs (CoPerson records must be deleted) before the OrgIdentity record
+
+        can be removed.'
+      operationId: deleteCoPerson
+      tags:
+      - Co People
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+        required: true
+        description: 'Remove the `CoPerson` object with ID `id`.
+
+          '
+        examples:
+          id-example:
+            value: /co_people/10.json
+            summary: Remove CoPerson object with ID 10
+      responses:
+        '200':
+          description: CoPerson deleted.
+        '400':
+          description: ID `id` not provided.
+        '401':
+          description: Authentication required.
+        '403':
+          description: The CO Person has one or more Person Role records an cannot be deleted.
+        '404':
+          description: ID `id` not found for object.
+        '500':
+          description: Unknown error.
+    get:
+      summary: Retrieve an existing person
+      description: Retrieve an existing CO Person object with ID `id`.
+      operationId: getCoPerson
+      tags:
+      - Co People
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+        required: true
+        description: 'Retrieve the `CoPerson` object with ID `id`.
+
+          '
+        examples:
+          id-example:
+            value: /co_people/10.json
+            summary: Retrieve the CoPerson object with ID 10
+      responses:
+        '200':
+          description: CoPerson returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoPeopleResponseType'
+        '401':
+          description: Authentication required.
+        '404':
+          description: id not found for object.
+        '500':
+          description: Unknown error.
+    put:
+      summary: Edit an existing person
+      description: Edit the `CoPerson` object with ID `id`.
+      operationId: editCoPerson
+      tags:
+      - Co People
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+        required: true
+        description: 'Edit the `CoPerson` object with ID `id`.
+
+          '
+        examples:
+          id-example:
+            value: /co_people/10.json
+            summary: Edit CoPerson object with ID 10
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CoPeopleRequestType'
+      responses:
+        '200':
+          description: CoPerson updated.
+        '400':
+          description: CoPerson Request not provided in body or error in one or more fields.
+        '401':
+          description: Authentication required.
+        '403':
+          description: The specififed CO does not exist.
+        '404':
+          description: id not found for object.
+        '500':
+          description: Unknown error.
+    servers:
+    - url: https://localhost/registry
+      description: 'Most deployments serve Registry using the default path /registry. If your deployment changes the
+
+        default path you must adjust the relative URIs.
+
+        '
+components:
+  schemas:
+    CoPersonResponse:
+      type: object
+      required:
+      - Version
+      - Id
+      - CoId
+      - Status
+      - Created
+      - Modified
+      - Revision
+      - Deleted
+      properties:
+        Version:
+          type: string
+          enum:
+          - '1.0'
+        Id:
+          type: string
+          example: '40'
+        CoId:
+          type: string
+          example: '2'
+        Timezone:
+          type: string
+          example: America/Chicago
+        DateOfBirth:
+          type: string
+          example: '1970-12-25'
+        Status:
+          type: string
+          enum:
+          - Active
+          - Approved
+          - Confirmed
+          - Declined
+          - Deleted
+          - Denied
+          - Duplicate
+          - Expired
+          - GracePeriod
+          - Invited
+          - Locked
+          - Pending
+          - PendingApproval
+          - PendingConfirmation
+          - PendingVetting
+          - Suspended
+          example: Active
+        Created:
+          type: string
+          example: 2022-02-28 18:39:43
+        Modified:
+          type: string
+          example: 2022-02-28 18:39:43
+        Revision:
+          type: string
+          example: '0'
+        Deleted:
+          type: boolean
+          example: false
+        Actoridentifier:
+          type: string
+          example: albert.einstein
+    CoPersonRequest:
+      type: object
+      required:
+      - Version
+      - CoId
+      - Status
+      properties:
+        Version:
+          type: string
+          enum:
+          - '1.0'
+        CoId:
+          type: string
+          example: '2'
+        Timezone:
+          type: string
+          example: America/Chicago
+        DateOfBirth:
+          type: string
+          example: '1970-12-25'
+        Status:
+          type: string
+          enum:
+          - Active
+          - Approved
+          - Confirmed
+          - Declined
+          - Deleted
+          - Denied
+          - Duplicate
+          - Expired
+          - GracePeriod
+          - Invited
+          - Locked
+          - Pending
+          - PendingApproval
+          - PendingConfirmation
+          - PendingVetting
+          - Suspended
+          example: Active
+    CoPeopleResponseType:
+      type: object
+      properties:
+        ResponseType:
+          type: string
+          enum:
+          - CoPeople
+        Version:
+          type: string
+          enum:
+          - '1.0'
+        CoPeople:
+          type: array
+          items:
+            $ref: '#/components/schemas/CoPersonResponse'
+    CoPeopleRequestType:
+      type: object
+      properties:
+        RequestType:
+          type: string
+          enum:
+          - CoPeople
+        Version:
+          type: string
+          enum:
+          - '1.0'
+        CoPeople:
+          type: array
+          items:
+            $ref: '#/components/schemas/CoPersonRequest'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+externalDocs:
+  description: COmanage Registry REST API v1
+  url: https://spaces.at.internet2.edu/display/COmanage/REST+API+v1
+x-refined-from:
+- internet2-restapiv1-openapi.yml
+- comanage-registry-restapiv1.yml

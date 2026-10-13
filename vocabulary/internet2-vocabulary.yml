@@ -1,0 +1,93 @@
+generated: '2026-10-13'
+method: derived
+generator: derive-vocabulary.py
+source: openapi/comanage-registry-restapiv1.yml
+vocabulary:
+  name: Internet2 Domain Vocabulary
+  description: 'Terms declared by Internet2''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-13'
+  terms:
+  - term: CoGroupRequest
+    definition: 'Object declared by the contract with fields: Version, CoId, Name, Description, Open, Status, CouId.'
+    tags:
+    - Object
+    source: openapi/comanage-registry-restapiv1.yml#/components/schemas/CoGroupRequest
+  - term: CoGroupResponse
+    definition: 'Object declared by the contract with fields: Version, Id, CoId, CouId, Name, Description, Open, Status, GroupType, Auto, NestingModeAll,
+      Created. (4 more)'
+    tags:
+    - Object
+    source: openapi/comanage-registry-restapiv1.yml#/components/schemas/CoGroupResponse
+  - term: CoGroupsRequestType
+    definition: 'Object declared by the contract with fields: RequestType, Version, CoGroups.'
+    tags:
+    - Object
+    source: openapi/comanage-registry-restapiv1.yml#/components/schemas/CoGroupsRequestType
+  - term: CoGroupsResponseType
+    definition: 'Object declared by the contract with fields: ResponseType, Version, CoGroups.'
+    tags:
+    - Object
+    source: openapi/comanage-registry-restapiv1.yml#/components/schemas/CoGroupsResponseType
+  - term: CoGroupMemberRequest
+    definition: 'Object declared by the contract with fields: Version, CoGroupId, Person, Member, Owner, ValidFrom, ValidThrough.'
+    tags:
+    - Object
+    source: openapi/comanage-registry-restapiv1.yml#/components/schemas/CoGroupMemberRequest
+  - term: CoGroupMemberResponse
+    definition: 'Object declared by the contract with fields: Version, Id, CoGroupId, Person, Member, Owner, ValidFrom, ValidThrough.'
+    tags:
+    - Object
+    source: openapi/comanage-registry-restapiv1.yml#/components/schemas/CoGroupMemberResponse
+  - term: CoGroupMembersRequestType
+    definition: 'Object declared by the contract with fields: RequestType, Version, CoGroupMembers.'
+    tags:
+    - Object
+    source: openapi/comanage-registry-restapiv1.yml#/components/schemas/CoGroupMembersRequestType
+  - term: CoGroupMembersResponseType
+    definition: 'Object declared by the contract with fields: ResponseType, Version, CoGroupMembers.'
+    tags:
+    - Object
+    source: openapi/comanage-registry-restapiv1.yml#/components/schemas/CoGroupMembersResponseType
+  - term: CoPersonRequest
+    definition: 'Object declared by the contract with fields: Version, CoId, Timezone, DateOfBirth, Status.'
+    tags:
+    - Object
+    source: openapi/comanage-registry-restapiv1.yml#/components/schemas/CoPersonRequest
+  - term: CoPersonResponse
+    definition: 'Object declared by the contract with fields: Version, Id, CoId, Timezone, DateOfBirth, Status, Created, Modified, Revision, Deleted,
+      Actoridentifier.'
+    tags:
+    - Object
+    source: openapi/comanage-registry-restapiv1.yml#/components/schemas/CoPersonResponse
+  - term: CoPeopleRequestType
+    definition: 'Object declared by the contract with fields: RequestType, Version, CoPeople.'
+    tags:
+    - Object
+    source: openapi/comanage-registry-restapiv1.yml#/components/schemas/CoPeopleRequestType
+  - term: CoPeopleResponseType
+    definition: 'Object declared by the contract with fields: ResponseType, Version, CoPeople.'
+    tags:
+    - Object
+    source: openapi/comanage-registry-restapiv1.yml#/components/schemas/CoPeopleResponseType
+  - term: EmailAddressRequest
+    definition: 'Object declared by the contract with fields: Version, Mail, Type, Description, Verified, Person.'
+    tags:
+    - Object
+    source: openapi/comanage-registry-restapiv1.yml#/components/schemas/EmailAddressRequest
+  - term: EmailAddressResponse
+    definition: 'Object declared by the contract with fields: Version, Id, Mail, Type, Description, Verified, Person, Created, Modified, SourceEmailAddressId,
+      Revision, Deleted. (1 more)'
+    tags:
+    - Object
+    source: openapi/comanage-registry-restapiv1.yml#/components/schemas/EmailAddressResponse
+  - term: EmailAddressesRequestType
+    definition: 'Object declared by the contract with fields: RequestType, Version, EmailAddresses.'
+    tags:
+    - Object
+    source: openapi/comanage-registry-restapiv1.yml#/components/schemas/EmailAddressesRequestType
+  - term: EmailAddressesResponseType
+    definition: 'Object declared by the contract with fields: ResponseType, Version, EmailAddresses.'
+    tags:
+    - Object
+    source: openapi/comanage-registry-restapiv1.yml#/components/schemas/EmailAddressesResponseType

@@ -1,0 +1,76 @@
+generated: '2026-10-13'
+method: derived
+generator: derive-data-model.py
+source:
+- openapi/comanage-registry-restapiv1.yml
+notation: has_one = property $ref; has_many = array of $ref; belongs_to = <entity>_id field
+summary:
+  entities: 16
+  entities_in_spec: 16
+  relationships: 8
+entities:
+- name: CoGroupMemberRequest
+  fields: 7
+- name: CoGroupMemberResponse
+  fields: 8
+- name: CoGroupMembersRequestType
+  fields: 3
+- name: CoGroupMembersResponseType
+  fields: 3
+- name: CoGroupRequest
+  fields: 7
+- name: CoGroupResponse
+  fields: 16
+- name: CoGroupsRequestType
+  fields: 3
+- name: CoGroupsResponseType
+  fields: 3
+- name: CoPeopleRequestType
+  fields: 3
+- name: CoPeopleResponseType
+  fields: 3
+- name: CoPersonRequest
+  fields: 5
+- name: CoPersonResponse
+  fields: 11
+- name: EmailAddressRequest
+  fields: 6
+- name: EmailAddressResponse
+  fields: 13
+- name: EmailAddressesRequestType
+  fields: 3
+- name: EmailAddressesResponseType
+  fields: 3
+relationships:
+- from: CoGroupsRequestType
+  to: CoGroupRequest
+  type: has_many
+  via: CoGroups
+- from: CoGroupsResponseType
+  to: CoGroupResponse
+  type: has_many
+  via: CoGroups
+- from: CoGroupMembersRequestType
+  to: CoGroupMemberRequest
+  type: has_many
+  via: CoGroupMembers
+- from: CoGroupMembersResponseType
+  to: CoGroupMemberResponse
+  type: has_many
+  via: CoGroupMembers
+- from: CoPeopleRequestType
+  to: CoPersonRequest
+  type: has_many
+  via: CoPeople
+- from: CoPeopleResponseType
+  to: CoPersonResponse
+  type: has_many
+  via: CoPeople
+- from: EmailAddressesRequestType
+  to: EmailAddressRequest
+  type: has_many
+  via: EmailAddresses
+- from: EmailAddressesResponseType
+  to: EmailAddressResponse
+  type: has_many
+  via: EmailAddresses

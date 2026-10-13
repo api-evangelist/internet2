@@ -1,0 +1,12 @@
+generated: '2026-10-13'
+method: generated
+generator: extract-docs-artifacts.py skills (local)
+source: openapi/comanage-registry-restapiv1.yml
+skills:
+- file: skills/internet2-add-person-to-group.md
+  name: internet2-add-person-to-group
+  api: openapi/comanage-registry-restapiv1.yml
+  operations:
+  - addCoPerson
+  - addCoGroup
+  - addCoGroupMember

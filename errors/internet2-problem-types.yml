@@ -1,0 +1,43 @@
+generated: '2026-10-13'
+method: derived
+generator: derive-problem-types.py
+source:
+- openapi/comanage-registry-restapiv1.yml
+format: custom
+envelope:
+  media_type: null
+  schema: null
+coverage:
+  operations: 19
+  statuses_declared: 5
+problems:
+- status: 400
+  title: Bad Request
+  description: ID `id` not provided.
+  operations: 10
+  media_types: []
+  schema: null
+- status: 401
+  title: Unauthorized
+  description: Authentication required.
+  operations: 18
+  media_types: []
+  schema: null
+- status: 403
+  title: Forbidden
+  description: The specififed CoGroup or CoPerson does not exist, or the CoPerson is already a member of the CoGroup.
+  operations: 9
+  media_types: []
+  schema: null
+- status: 404
+  title: Not Found
+  description: id not found for object.
+  operations: 13
+  media_types: []
+  schema: null
+- status: 500
+  title: Internal Server Error
+  description: Unknown error.
+  operations: 18
+  media_types: []
+  schema: null

@@ -1,0 +1,305 @@
+openapi: 3.2.0
+info:
+  title: Internet2 Email Addresses.json API
+  version: 0.4.0
+  contact:
+    name: COmanage Project
+    url: https://spaces.at.internet2.edu/display/COmanage/About+the+COmanage+Project
+    email: comanage-users@internet2.edu
+  license:
+    name: APACHE LICENSE, VERSION 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  description: 'Operations tagged Email Addresses.json across 2 of this provider''s published API definitions: internet2-restapiv1-openapi.yml, comanage-registry-restapiv1.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://localhost/registry
+  description: 'Most deployments serve Registry using the default path /registry. If your deployment changes the
+
+    default path you must adjust the relative URIs.
+
+    '
+security:
+- basicAuth: []
+tags:
+- name: Email Addresses.json
+paths:
+  /email_addresses.json:
+    get:
+      summary: Retrieve email addresses
+      description: 'Retrieve `EmailAddress` objects.
+
+
+        Use an optional query parameter to filter for objects attached to
+
+        a CO Department, CO Person, Organization, or Organizational Identity.
+
+
+        Query parameters are mutually exclusive.
+
+
+        Platform privileges required when no query parameter is used.'
+      operationId: getEmailAddresses
+      tags:
+      - Email Addresses.json
+      parameters:
+      - name: copersonid
+        in: query
+        schema:
+          type: integer
+        description: 'Retrieve `EmailAddress` objects attached to a CO Person.
+
+          '
+        examples:
+          copersonid-example:
+            value: /email_addresses.json?copersonid=12
+            summary: Retrieve EmailAddress objects for CO Person with ID 12
+      - name: codeptid
+        in: query
+        schema:
+          type: integer
+        description: 'Retrieve `EmailAddress` objects attached to a CO Department
+
+          '
+        examples:
+          codeptid-example:
+            value: /email_addresses.json?codeptid=2
+            summary: Retrieve EmailAddress objects for CO Department with ID 2
+      - name: organizationid
+        in: query
+        schema:
+          type: integer
+        description: 'Retrieve `EmailAddress` objects attached to an Organization
+
+          '
+        examples:
+          organizationid-example:
+            value: /email_addresses.json?organizationid=2
+            summary: Retrieve EmailAddress objects for Organization with ID 2
+      - name: orgidentityid
+        in: query
+        schema:
+          type: integer
+        description: 'Retrieve `EmailAddress` objects attached to an Organizational Identity
+
+          '
+        examples:
+          organizationid-example:
+            value: /email_addresses.json?orgidentityid=2
+            summary: Retrieve EmailAddress objects for Organizational Identity with ID 2
+      responses:
+        '200':
+          description: EmailAddresses returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailAddressesResponseType'
+        '204':
+          description: The requested object was found, but has no email addresses attached.
+        '401':
+          description: Authentication required.
+        '404':
+          description: id not found for object.
+        '500':
+          description: Unknown error.
+    post:
+      summary: Add a new email address
+      description: Add a new `EmailAddress` object.
+      operationId: addEmailAddress
+      tags:
+      - Email Addresses.json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailAddressesRequestType'
+      responses:
+        '201':
+          description: EmailAddress added
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ResponseType:
+                    type: string
+                    enum:
+                    - NewObject
+                  Version:
+                    type: string
+                    enum:
+                    - '1.0'
+                  ObjectType:
+                    type: string
+                    enum:
+                    - EmailAddress
+                  Id:
+                    type: string
+                    example: '3'
+        '400':
+          description: EmailAddress Request not provided in POST body
+    servers:
+    - url: https://localhost/registry
+      description: 'Most deployments serve Registry using the default path /registry. If your deployment changes the
+
+        default path you must adjust the relative URIs.
+
+        '
+components:
+  schemas:
+    EmailAddressesRequestType:
+      type: object
+      properties:
+        RequestType:
+          type: string
+          enum:
+          - EmailAddresses
+        Version:
+          type: string
+          enum:
+          - '1.0'
+        EmailAddresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailAddressRequest'
+    EmailAddressRequest:
+      type: object
+      required:
+      - Version
+      - Mail
+      - Type
+      - Verified
+      - Person
+      properties:
+        Version:
+          type: string
+          enum:
+          - '1.0'
+        Mail:
+          type: string
+          example: albert.einstein@ligo.org
+        Type:
+          type: string
+          enum:
+          - delivery
+          - forwarding
+          - list
+          - official
+          - personal
+          - preferred
+          - recovery
+          example: official
+        Description:
+          type: string
+          example: LIGO vanity email address
+        Verified:
+          type: boolean
+          example: true
+        Person:
+          type: object
+          properties:
+            Type:
+              type: string
+              enum:
+              - CO
+              - Dept
+              - Org
+              - Organization
+              example: CO
+            Id:
+              type: string
+              example: '12'
+    EmailAddressResponse:
+      type: object
+      required:
+      - Version
+      - Id
+      - Mail
+      - Type
+      - Verified
+      - Created
+      - Modified
+      - Revision
+      - Deleted
+      properties:
+        Version:
+          type: string
+          enum:
+          - '1.0'
+        Id:
+          type: string
+          example: '2314'
+        Mail:
+          type: string
+          example: albert.einstein@ligo.org
+        Type:
+          type: string
+          enum:
+          - delivery
+          - forwarding
+          - list
+          - official
+          - personal
+          - preferred
+          - recovery
+          example: official
+        Description:
+          type: string
+        Verified:
+          type: boolean
+          example: false
+        Person:
+          type: object
+          properties:
+            Type:
+              type: string
+              enum:
+              - CO
+              - Dept
+              - Org
+              - Organization
+              example: CO
+            Id:
+              type: string
+              example: '12'
+        Created:
+          type: string
+          example: 2022-02-28 18:39:43
+        Modified:
+          type: string
+          example: 2022-02-28 18:39:43
+        SourceEmailAddressId:
+          type: string
+        Revision:
+          type: string
+          example: '0'
+        Deleted:
+          type: boolean
+          example: false
+        ActorIdentifier:
+          type: string
+          example: albert.einstein
+    EmailAddressesResponseType:
+      type: object
+      properties:
+        ResponseType:
+          type: string
+          enum:
+          - EmailAddresses
+        Version:
+          type: string
+          enum:
+          - '1.0'
+        EmailAddresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailAddressResponse'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+externalDocs:
+  description: COmanage Registry REST API v1
+  url: https://spaces.at.internet2.edu/display/COmanage/REST+API+v1
+x-refined-from:
+- internet2-restapiv1-openapi.yml
+- comanage-registry-restapiv1.yml

@@ -1,23 +1,286 @@
 aid: internet2
 name: Internet2
-description: 'Internet2 is a company surfaced via the API Evangelist harvest backlog (source: tag-qc)
-  and added to the network as a stub for full-pipeline profiling.'
+image: https://internet2.edu/wp-content/uploads/2020/12/comm-internet2-logo-250x190-4.png
+description: Internet2 is a nonprofit advanced networking consortium that provides a high‑performance, secure network for research and education
+  institutions across the United States. It offers cloud services, identity management, security solutions, and collaborative tools to enable
+  innovative research, teaching, and community initiatives. The organization also supports policy development, network engineering, and a range
+  of services to its member institutions, fostering a robust digital research ecosystem.
 url: https://raw.githubusercontent.com/api-evangelist/internet2/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:tag-qc
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-10-13 (modular-v1; was harvest)
 specificationVersion: '0.20'
 created: '2026-10-13'
 modified: '2026-10-13'
 tags:
 - Company
-apis: []
+- Networking
+- Research
+- Education
+- Nonprofit
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgenticAccess
+  url: agentic-access/internet2-agentic-access.yml
+- type: Spectral
+  url: rules/internet2-rules.yml
+- type: JSONLD
+  url: json-ld/internet2-context.jsonld
+- type: Vocabulary
+  url: vocabulary/internet2-vocabulary.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DataModel
+  url: data-model/internet2-data-model.yml
+- type: ErrorCatalog
+  url: errors/internet2-problem-types.yml
+- type: Conformance
+  url: conformance/internet2-conformance.yml
+- type: LLMsTxt
+  url: llms/internet2-llms.txt
+- type: Hosts
+  url: hosts/internet2-hosts.yml
+- type: SDKs
+  url: packages/internet2-packages.yml
+- type: Packages
+  url: packages/internet2-packages.yml
+- type: TermsOfService
+  url: https://internet2.edu/community/about-us/policies/terms-of-use/
+- type: SignUp
+  url: https://internet2.edu/sign-up-for-summer-class/
+- type: Security
+  url: https://internet2.edu/security/
+- type: Roadmap
+  url: https://internet2.edu/roadmap
+- type: PrivacyPolicy
+  url: https://internet2.edu/community/about-us/policies/privacy/
+- type: Newsroom
+  url: https://internet2.edu/news
+- type: GitHubOrganization
+  url: https://github.com/Internet2
+- type: Authentication
+  url: authentication/internet2-authentication.yml
+- type: DomainSecurity
+  url: security/internet2-domain-security.yml
 - type: Website
   url: https://internet2.edu/
+apis:
+- aid: internet2:internet2-co-api
+  name: Internet2 Co API
+  description: The Co API from Internet2 — 1 operation(s) for co.
+  humanURL: https://internet2.edu/
+  baseURL: https://localhost/registry
+  tags:
+  - Co
+  properties:
+  - type: OpenAPI
+    url: openapi/internet2-co-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/internet2-co-group-members-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-email-addresses-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-group-members-request-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-email-addresses-request-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-people-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-groups-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-identifier-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-person-message-schema.json
+- aid: internet2:internet2-co-group-members-api
+  name: Internet2 Co Group Members API
+  description: The Co Group Members API from Internet2 — 1 operation(s) for co group members.
+  humanURL: https://internet2.edu/
+  baseURL: https://localhost/registry
+  tags:
+  - Co Group Members
+  properties:
+  - type: OpenAPI
+    url: openapi/internet2-co-group-members-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/internet2-co-group-members-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-email-addresses-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-group-members-request-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-email-addresses-request-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-people-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-groups-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-identifier-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-person-message-schema.json
+- aid: internet2:internet2-co-group-members-json-api
+  name: Internet2 Co Group Members.json API
+  description: The Co Group Members.json API from Internet2 — 1 operation(s) for co group members.json.
+  humanURL: https://internet2.edu/
+  baseURL: https://localhost/registry
+  tags:
+  - Co Group Members.json
+  properties:
+  - type: OpenAPI
+    url: openapi/internet2-co-group-members-json-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/internet2-co-group-members-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-email-addresses-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-group-members-request-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-email-addresses-request-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-people-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-groups-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-identifier-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-person-message-schema.json
+- aid: internet2:internet2-co-groups-api
+  name: Internet2 Co Groups API
+  description: The Co Groups API from Internet2 — 3 operation(s) for co groups.
+  humanURL: https://internet2.edu/
+  baseURL: https://localhost/registry
+  tags:
+  - Co Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/internet2-co-groups-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/internet2-co-group-members-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-email-addresses-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-group-members-request-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-email-addresses-request-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-people-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-groups-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-identifier-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-person-message-schema.json
+- aid: internet2:internet2-co-groups-json-api
+  name: Internet2 Co Groups.json API
+  description: The Co Groups.json API from Internet2 — 1 operation(s) for co groups.json.
+  humanURL: https://internet2.edu/
+  baseURL: https://localhost/registry
+  tags:
+  - Co Groups.json
+  properties:
+  - type: OpenAPI
+    url: openapi/internet2-co-groups-json-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/internet2-co-group-members-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-email-addresses-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-group-members-request-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-email-addresses-request-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-people-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-groups-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-identifier-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-person-message-schema.json
+- aid: internet2:internet2-co-people-api
+  name: Internet2 Co People API
+  description: The Co People API from Internet2 — 1 operation(s) for co people.
+  humanURL: https://internet2.edu/
+  baseURL: https://localhost/registry
+  tags:
+  - Co People
+  properties:
+  - type: OpenAPI
+    url: openapi/internet2-co-people-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/internet2-co-group-members-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-email-addresses-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-group-members-request-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-email-addresses-request-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-people-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-groups-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-identifier-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-person-message-schema.json
+- aid: internet2:internet2-co-people-json-api
+  name: Internet2 Co People.json API
+  description: The Co People.json API from Internet2 — 1 operation(s) for co people.json.
+  humanURL: https://internet2.edu/
+  baseURL: https://localhost/registry
+  tags:
+  - Co People.json
+  properties:
+  - type: OpenAPI
+    url: openapi/internet2-co-people-json-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/internet2-co-group-members-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-email-addresses-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-group-members-request-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-email-addresses-request-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-people-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-groups-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-identifier-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-person-message-schema.json
+- aid: internet2:internet2-email-addresses-json-api
+  name: Internet2 Email Addresses.json API
+  description: The Email Addresses.json API from Internet2 — 1 operation(s) for email addresses.json.
+  humanURL: https://internet2.edu/
+  baseURL: https://localhost/registry
+  tags:
+  - Email Addresses.json
+  properties:
+  - type: OpenAPI
+    url: openapi/internet2-email-addresses-json-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/internet2-co-group-members-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-email-addresses-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-group-members-request-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-email-addresses-request-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-people-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-groups-response-type-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-identifier-schema.json
+  - type: JSONSchema
+    url: json-schema/internet2-co-person-message-schema.json
+x-enrichment:
+  date: '2026-10-13'
+  status: enriched
+  artifacts_added: 31
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local

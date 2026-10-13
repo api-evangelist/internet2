@@ -1,0 +1,9 @@
+generated: '2026-10-13'
+method: probed
+generator: harvest-sibling-contracts.py
+source: https://raw.githubusercontent.com/Internet2/comanage-registry/main/app/Config/Schema/restapiv1.yaml
+found_on: https://github.com/Internet2/comanage-registry
+operations: gh:restapiv1.yaml
+version: 3.0.3
+ownership: sibling of a contract the pass accepted on the same host; URL names the
+  provider

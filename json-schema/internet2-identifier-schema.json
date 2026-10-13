@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/internet2/main/json-schema/internet2-identifier-schema.json",
+  "title": "Identifier",
+  "description": "Identifier for CO Person or an Organizational Identity",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/_original/internet2-coreapi-openapi.yml#/components/schemas/Identifier",
+  "type": "object",
+  "properties": {
+    "meta": {
+      "$ref": "#/$defs/meta"
+    },
+    "identifier": {
+      "type": "string",
+      "description": "Identifier value"
+    },
+    "type": {
+      "type": "string",
+      "description": "Identifier type: \n**sor-affiliate**,\n**badge**,\n**enterprise**,\n**eppn**,\n**eptid**,\n**epuid**,\n**gid**,\n**sor-guest**,\n**sor-hr**,\n**mail**,\n**national**,\n**network**,\n**oidcsub**,\n**openid**,\n**orcid**,\n**provisioningtarget**,\n**reference**,\n**pairwiseid**,\n**subjectid**,\n**sor-student**,\n**sorid**,\n**uid**\n"
+    },
+    "login": {
+      "type": "boolean",
+      "description": "Whether this Identifier can be used to login to Registry"
+    },
+    "status": {
+      "type": "string",
+      "description": "Identifier status: \n**A** - Active,\n**S** - Suspended\n",
+      "enum": [
+        "A",
+        "S"
+      ]
+    }
+  },
+  "required": [
+    "identifier"
+  ],
+  "$defs": {
+    "meta": {
+      "type": "object",
+      "description": "Metadata about objects returned when reading (get). Note that most metadata returned by read\ncalls is not permitted (and will be ignored) when invoking write operations (post|put).\nThe exception is the sub-element id, which when present is used to indicate the update\nof an existing object (such as an EmailAddress) rather than the creation of a new one.\n",
+      "properties": {
+        "id": {
+          "description": "COmanage Registry identifier for this object",
+          "type": "integer"
+        },
+        "actor_identifier": {
+          "description": "The identifier for the actor who last modified this object",
+          "type": "string",
+          "readOnly": true
+        },
+        "created": {
+          "description": "When this object was originally created",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        },
+        "deleted": {
+          "description": "Whether this object has been deleted",
+          "type": "boolean",
+          "readOnly": true
+        },
+        "modified": {
+          "description": "When this object was last modified",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        },
+        "revision": {
+          "description": "The revision number for this object",
+          "type": "integer",
+          "minimum": 0,
+          "readOnly": true
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

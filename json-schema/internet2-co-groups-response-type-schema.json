@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/internet2/main/json-schema/internet2-co-groups-response-type-schema.json",
+  "title": "CoGroupsResponseType",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/comanage-registry-restapiv1.yml#/components/schemas/CoGroupsResponseType",
+  "type": "object",
+  "properties": {
+    "ResponseType": {
+      "type": "string",
+      "enum": [
+        "CoGroups"
+      ]
+    },
+    "Version": {
+      "type": "string",
+      "enum": [
+        "1.0"
+      ]
+    },
+    "CoGroups": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/CoGroupResponse"
+      }
+    }
+  },
+  "$defs": {
+    "CoGroupResponse": {
+      "type": "object",
+      "required": [
+        "Version",
+        "Id",
+        "CoId",
+        "Name",
+        "Description",
+        "Open",
+        "Status",
+        "GroupType",
+        "Auto",
+        "Created",
+        "Modified",
+        "Revision",
+        "Deleted"
+      ],
+      "properties": {
+        "Version": {
+          "type": "string",
+          "enum": [
+            "1.0"
+          ]
+        },
+        "Id": {
+          "type": "string"
+        },
+        "CoId": {
+          "type": "string"
+        },
+        "CouId": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Open": {
+          "type": "boolean"
+        },
+        "Status": {
+          "type": "string",
+          "enum": [
+            "Active",
+            "Suspended"
+          ]
+        },
+        "GroupType": {
+          "type": "string",
+          "enum": [
+            "S",
+            "MA",
+            "A",
+            "M",
+            "AP",
+            "AN",
+            "MN"
+          ]
+        },
+        "Auto": {
+          "type": "boolean"
+        },
+        "NestingModeAll": {
+          "type": "boolean"
+        },
+        "Created": {
+          "type": "string"
+        },
+        "Modified": {
+          "type": "string"
+        },
+        "Revision": {
+          "type": "string"
+        },
+        "Deleted": {
+          "type": "boolean"
+        },
+        "Actoridentifier": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

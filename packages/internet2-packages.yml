@@ -1,0 +1,50 @@
+generated: '2026-10-13'
+method: probed
+generator: harvest-packages.py
+source: registry metadata endpoints (registry.npmjs.org, pypi.org, rubygems.org, api.nuget.org, packagist.org, crates.io) ; github.com/Internet2
+ownership_rule: 'official: true only when the registry metadata (homepage, repository, author, URLs) names the provider''s domain (internet2.edu,
+  security/internet2-domain-security.yml) or its accepted GitHub org (Internet2).'
+packages:
+- name: ntac-networkautomation
+  registry: github
+  url: https://github.com/Internet2/ntac-networkautomation
+  language: Jinja
+  official: true
+  version: null
+  published: '2025-06-16'
+  source_repo: https://github.com/Internet2/ntac-networkautomation
+  evidence: repository in github.com/Internet2, whose profile names the provider's domain
+- name: class-adv-spr2024-networking
+  registry: github
+  url: https://github.com/Internet2/class-adv-spr2024-networking
+  language: HCL
+  official: true
+  version: null
+  published: '2024-05-10'
+  source_repo: https://github.com/Internet2/class-adv-spr2024-networking
+  evidence: repository in github.com/Internet2, whose profile names the provider's domain
+- name: class-adv2023-network
+  registry: github
+  url: https://github.com/Internet2/class-adv2023-network
+  language: HCL
+  official: true
+  version: null
+  published: '2023-04-14'
+  source_repo: https://github.com/Internet2/class-adv2023-network
+  evidence: repository in github.com/Internet2, whose profile names the provider's domain
+- name: internet2
+  registry: npm
+  url: https://www.npmjs.com/package/internet2
+  language: JavaScript
+  official: false
+  version: 0.0.0
+  published: '2019-11-18'
+  evidence: 'name match only: the metadata names neither the provider''s domain nor its GitHub org'
+- name: internet2
+  registry: crates
+  url: https://crates.io/crates/internet2
+  language: Rust
+  official: false
+  version: 0.9.0
+  published: '2023-02-06'
+  evidence: 'name match only: the metadata names neither the provider''s domain nor its GitHub org'

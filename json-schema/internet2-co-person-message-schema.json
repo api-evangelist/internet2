@@ -1,0 +1,686 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/internet2/main/json-schema/internet2-co-person-message-schema.json",
+  "title": "CoPersonMessage",
+  "description": "Collection of a CO Person and related objects",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/_original/internet2-coreapi-openapi.yml#/components/schemas/CoPersonMessage",
+  "type": "object",
+  "properties": {
+    "CoPerson": {
+      "$ref": "#/$defs/CoPerson"
+    },
+    "CoGroupMember": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/CoGroupMember"
+      }
+    },
+    "EmailAddress": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/EmailAddress"
+      }
+    },
+    "CoPersonRole": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/CoPersonRole"
+      }
+    },
+    "Identifier": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Identifier"
+      }
+    },
+    "Name": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Name"
+      }
+    },
+    "SshKey": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/SshKey"
+      }
+    },
+    "Url": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Url"
+      }
+    },
+    "OrgIdentity": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/OrgIdentity"
+      }
+    }
+  },
+  "$defs": {
+    "AdHocAttribute": {
+      "type": "object",
+      "description": "An ad-hoc attribute for a CO Person Role or an Organizational Identity",
+      "properties": {
+        "meta": {
+          "$ref": "#/$defs/meta"
+        },
+        "tag": {
+          "description": "Tag for this Ad Hoc Attribute",
+          "type": "string"
+        },
+        "value": {
+          "description": "Value of this Ad Hoc Attribute",
+          "type": "string"
+        }
+      },
+      "required": [
+        "tag"
+      ],
+      "additionalProperties": false
+    },
+    "Address": {
+      "type": "object",
+      "description": "Postal address for a CO Person Role or Organizational Identity",
+      "properties": {
+        "meta": {
+          "$ref": "#/$defs/meta"
+        },
+        "country": {
+          "description": "Country for this Address",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description of this Address",
+          "type": "string"
+        },
+        "language": {
+          "description": "Language encoding of this Address",
+          "type": "string"
+        },
+        "locality": {
+          "description": "Locality eg city of this Address",
+          "type": "string"
+        },
+        "postal_code": {
+          "description": "Postal code of this Address",
+          "type": "string"
+        },
+        "room": {
+          "description": "Room associated with this Address",
+          "type": "string"
+        },
+        "state": {
+          "description": "State of this Address",
+          "type": "string"
+        },
+        "street": {
+          "description": "Street of this Address",
+          "type": "string"
+        },
+        "type": {
+          "description": "Type of this Address",
+          "type": "string"
+        }
+      }
+    },
+    "CoGroupMember": {
+      "type": "object",
+      "description": "Membership of CO Person in a CO Group",
+      "properties": {
+        "meta": {
+          "$ref": "#/$defs/meta"
+        },
+        "co_group_id": {
+          "type": "integer",
+          "description": "CO Group ID for this membership"
+        },
+        "member": {
+          "type": "boolean",
+          "description": "If this CO Person is a member of this group"
+        },
+        "owner": {
+          "type": "boolean",
+          "description": "If this CO Person is an owner of this group"
+        },
+        "co_group_nesting_id": {
+          "type": "string",
+          "description": "CO Group Nesting that created this membership, if set"
+        },
+        "valid_from": {
+          "type": "string",
+          "format": "date",
+          "description": "Member validity date from"
+        },
+        "valid_through": {
+          "type": "string",
+          "format": "date",
+          "description": "Member validity date through"
+        }
+      },
+      "required": [
+        "co_group_id"
+      ]
+    },
+    "CoPerson": {
+      "type": "object",
+      "description": "Simple object representing a person in a CO and their status. \nOther objects like Name, EmailAddress, and Identifier link against\nthis object. Multiple Organizational Identities representing external\nidentities may also be linked against this object.\n",
+      "properties": {
+        "meta": {
+          "$ref": "#/$defs/meta"
+        },
+        "co_id": {
+          "description": "CO ID for this CO Person",
+          "type": "integer"
+        },
+        "date_of_birth": {
+          "description": "CO Person date of birth",
+          "type": "string",
+          "format": "date"
+        },
+        "status": {
+          "type": "string",
+          "description": "CO Person status: \n**A** - Active,\n**Y** - Approved,\n**C** - Confirmed,\n**D** - Deleted,\n**N** - Denied,\n**D2** - Duplicate,\n**XP** - Expired,\n**GP** - GracePeriod,\n**I** - Invited,\n**LK** - Locked,\n**P** - Pending,\n**PA** - PendingApproval,\n**PC** - PendingConfirmation,\n**PV** - PendingVetting,\n**S** - Suspended,\n**D** - Declined\n",
+          "enum": [
+            "A",
+            "Y",
+            "C",
+            "D",
+            "N",
+            "D2",
+            "XP",
+            "GP",
+            "I",
+            "LK",
+            "P",
+            "PA",
+            "PC",
+            "PV",
+            "S",
+            "X"
+          ]
+        },
+        "timezone": {
+          "description": "Preferred timezone of this CO Person, for UI purposes",
+          "type": "string"
+        }
+      },
+      "required": [
+        "co_id",
+        "status"
+      ]
+    },
+    "CoPersonRole": {
+      "type": "object",
+      "description": "Role for a CO Person",
+      "properties": {
+        "meta": {
+          "$ref": "#/$defs/meta"
+        },
+        "cou_id": {
+          "type": "integer",
+          "description": "COU for this Role"
+        },
+        "title": {
+          "type": "string",
+          "description": "Title for this Role"
+        },
+        "o": {
+          "type": "string",
+          "description": "Organization for this Role"
+        },
+        "ou": {
+          "type": "string",
+          "description": "Department for this Role"
+        },
+        "valid_from": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Valid from time for this Role"
+        },
+        "valid_through": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Valid through time for this Role"
+        },
+        "status": {
+          "type": "string",
+          "description": "CO Person Role status: \n**A** - Active,\n**Y** - Approved,\n**C** - Confirmed,\n**D** - Deleted,\n**N** - Denied,\n**D2** - Duplicate,\n**XP** - Expired,\n**GP** - GracePeriod,\n**I** - Invited,\n**LK** - Locked,\n**P** - Pending,\n**PA** - PendingApproval,\n**PC** - PendingConfirmation,\n**PV** - PendingVetting,\n**S** - Suspended,\n**D** - Declined\n",
+          "enum": [
+            "A",
+            "Y",
+            "C",
+            "D",
+            "N",
+            "D2",
+            "XP",
+            "GP",
+            "I",
+            "LK",
+            "P",
+            "PA",
+            "PC",
+            "PV",
+            "S",
+            "X"
+          ]
+        },
+        "sponsor_co_person_id": {
+          "type": "string",
+          "description": "CO Person ID of the sponsor for this Role"
+        },
+        "affiliation": {
+          "type": "string",
+          "description": "CO Person Role affiliation: \n**faculty**,\n**student**,\n**staff**,\n**alum**,\n**member**,\n**affiliate**,\n**employee**,\n**librarywalkin\n",
+          "enum": [
+            "faculty",
+            "student",
+            "staff",
+            "alum",
+            "member",
+            "affiliate",
+            "employee",
+            "librarywalkin"
+          ]
+        },
+        "ordr": {
+          "type": "string",
+          "description": "Order of this Role, relative to other roles for this person"
+        },
+        "Address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Address"
+          }
+        },
+        "AdHocAttribute": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AdHocAttribute"
+          }
+        },
+        "TelephoneNumber": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TelephoneNumber"
+          }
+        }
+      },
+      "required": [
+        "affiliation",
+        "status"
+      ]
+    },
+    "EmailAddress": {
+      "type": "object",
+      "description": "Email address for a CO Person or an Organizational Identity",
+      "properties": {
+        "meta": {
+          "$ref": "#/$defs/meta"
+        },
+        "mail": {
+          "type": "string",
+          "description": "Email address",
+          "format": "email"
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of email address"
+        },
+        "verified": {
+          "type": "boolean",
+          "description": "Whether the email address has been verified"
+        }
+      },
+      "required": [
+        "mail"
+      ]
+    },
+    "Identifier": {
+      "type": "object",
+      "description": "Identifier for CO Person or an Organizational Identity",
+      "properties": {
+        "meta": {
+          "$ref": "#/$defs/meta"
+        },
+        "identifier": {
+          "type": "string",
+          "description": "Identifier value"
+        },
+        "type": {
+          "type": "string",
+          "description": "Identifier type: \n**sor-affiliate**,\n**badge**,\n**enterprise**,\n**eppn**,\n**eptid**,\n**epuid**,\n**gid**,\n**sor-guest**,\n**sor-hr**,\n**mail**,\n**national**,\n**network**,\n**oidcsub**,\n**openid**,\n**orcid**,\n**provisioningtarget**,\n**reference**,\n**pairwiseid**,\n**subjectid**,\n**sor-student**,\n**sorid**,\n**uid**\n"
+        },
+        "login": {
+          "type": "boolean",
+          "description": "Whether this Identifier can be used to login to Registry"
+        },
+        "status": {
+          "type": "string",
+          "description": "Identifier status: \n**A** - Active,\n**S** - Suspended\n",
+          "enum": [
+            "A",
+            "S"
+          ]
+        }
+      },
+      "required": [
+        "identifier"
+      ]
+    },
+    "Name": {
+      "type": "object",
+      "description": "Name for a CO Person or an Organizational Identity",
+      "properties": {
+        "meta": {
+          "$ref": "#/$defs/meta"
+        },
+        "given": {
+          "type": "string",
+          "description": "Given name"
+        },
+        "family": {
+          "type": "string",
+          "description": "Family name"
+        },
+        "formatted": {
+          "type": "string",
+          "description": "The fully formatted name"
+        },
+        "language": {
+          "type": "string",
+          "description": "The language encoding for this Name"
+        },
+        "middle": {
+          "type": "string",
+          "description": "Middle name"
+        },
+        "prefix": {
+          "type": "string",
+          "description": "The honorific or prefix for the Name"
+        },
+        "primary_name": {
+          "type": "boolean",
+          "description": "Whether this is the primary Name"
+        },
+        "honorific": {
+          "type": "string",
+          "description": "Honorific prefix"
+        },
+        "suffix": {
+          "type": "string",
+          "description": "Honorific suffix"
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of name: \n**alternate**,\n**author**,\n**fka**,\n**official**,\n**preferred**\n",
+          "enum": [
+            "alternate",
+            "author",
+            "fka",
+            "official",
+            "preferred"
+          ]
+        }
+      },
+      "required": [
+        "given"
+      ]
+    },
+    "OrgIdentity": {
+      "type": "object",
+      "description": "Organizational Identity linked to a CO Person, representing an external identity.\nNote that multiple Organizational Identities may be linked to a single CO Person.\n",
+      "properties": {
+        "meta": {
+          "$ref": "#/$defs/meta"
+        },
+        "co_id": {
+          "type": "integer",
+          "description": "CO for this Org Identity"
+        },
+        "title": {
+          "type": "string",
+          "description": "Title for this Org Identity"
+        },
+        "o": {
+          "type": "string",
+          "description": "Organization for this Org Identity"
+        },
+        "ou": {
+          "type": "string",
+          "description": "Department for this Org Identity"
+        },
+        "valid_from": {
+          "type": "string",
+          "description": "Valid from time for this Org Identity",
+          "format": "date-time"
+        },
+        "valid_through": {
+          "type": "string",
+          "description": "Valid through time for this Org Identity",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "description": "Org Identity status: \n**RM** - Removed,\n**SY** - Synced\n",
+          "enum": [
+            "RM",
+            "SY"
+          ]
+        },
+        "affiliation": {
+          "type": "string",
+          "description": "Org Identity affiliation: \n**faculty**,\n**student**,\n**staff**,\n**alum**,\n**member**,\n**affiliate**,\n**employee**,\n**librarywalkin\n",
+          "enum": [
+            "faculty",
+            "student",
+            "staff",
+            "alum",
+            "member",
+            "affiliate",
+            "employee",
+            "librarywalkin"
+          ]
+        },
+        "date_of_birth": {
+          "type": "string",
+          "description": "Org Identity date of birth",
+          "format": "date"
+        },
+        "Address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Address"
+          }
+        },
+        "AdHocAttribute": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AdHocAttribute"
+          }
+        },
+        "EmailAddress": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/EmailAddress"
+          }
+        },
+        "Identifier": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Identifier"
+          }
+        },
+        "Name": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Name"
+          }
+        },
+        "TelephoneNumber": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TelephoneNumber"
+          }
+        },
+        "Url": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Url"
+          }
+        }
+      }
+    },
+    "SshKey": {
+      "type": "object",
+      "description": "Object representing an SSH key for a CO Person, including the comment and key type",
+      "properties": {
+        "meta": {
+          "$ref": "#/$defs/meta"
+        },
+        "comment": {
+          "description": "Comment for this SSH Key",
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "description": "SSH Key type: \n **ssh-dss**,\n **ecdsa-sha2-nistp256**,\n **ecdsa-sha2-nistp384**,\n **ecdsa-sha2-nistp521**,\n **ssh-ed25519**,\n **ssh-rsa**,\n **ssh-rsa1\n",
+          "enum": [
+            "ssh-dss",
+            "ecdsa-sha2-nistp256",
+            "ecdsa-sha2-nistp384",
+            "ecdsa-sha2-nistp521",
+            "ssh-ed25519",
+            "ssh-rsa",
+            "ssh-rsa1"
+          ]
+        },
+        "skey": {
+          "description": "SSH Key",
+          "type": "string"
+        },
+        "ssh_key_authenticator_id": {
+          "description": "SSH Key Authenticator ID associated with this SSH Key",
+          "type": "string",
+          "readOnly": true
+        }
+      },
+      "required": [
+        "type",
+        "skey"
+      ],
+      "additionalProperties": false
+    },
+    "TelephoneNumber": {
+      "type": "object",
+      "description": "Telephone number for a CO Person Role or an Organizational Identity",
+      "properties": {
+        "meta": {
+          "$ref": "#/$defs/meta"
+        },
+        "country_code": {
+          "description": "Country code for this Telephone Number",
+          "type": "string"
+        },
+        "area_code": {
+          "description": "Area code for this Telephone Number",
+          "type": "string"
+        },
+        "number": {
+          "description": "Number for this Telephone Number",
+          "type": "string"
+        },
+        "extension": {
+          "description": "Extension for this Telephone Number",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description of this Telephone Number",
+          "type": "string"
+        },
+        "type": {
+          "description": "Type of this Telephone Number",
+          "type": "string"
+        }
+      },
+      "required": [
+        "number"
+      ],
+      "additionalProperties": false
+    },
+    "Url": {
+      "type": "object",
+      "description": "Url for a CO Person or an Organizational Identity",
+      "properties": {
+        "meta": {
+          "$ref": "#/$defs/meta"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of this URL"
+        },
+        "url": {
+          "type": "string",
+          "description": "URL: \n**official**,\n**personal**\n",
+          "enum": [
+            "official",
+            "personal"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of URL"
+        }
+      },
+      "required": [
+        "url"
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "description": "Metadata about objects returned when reading (get). Note that most metadata returned by read\ncalls is not permitted (and will be ignored) when invoking write operations (post|put).\nThe exception is the sub-element id, which when present is used to indicate the update\nof an existing object (such as an EmailAddress) rather than the creation of a new one.\n",
+      "properties": {
+        "id": {
+          "description": "COmanage Registry identifier for this object",
+          "type": "integer"
+        },
+        "actor_identifier": {
+          "description": "The identifier for the actor who last modified this object",
+          "type": "string",
+          "readOnly": true
+        },
+        "created": {
+          "description": "When this object was originally created",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        },
+        "deleted": {
+          "description": "Whether this object has been deleted",
+          "type": "boolean",
+          "readOnly": true
+        },
+        "modified": {
+          "description": "When this object was last modified",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        },
+        "revision": {
+          "description": "The revision number for this object",
+          "type": "integer",
+          "minimum": 0,
+          "readOnly": true
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

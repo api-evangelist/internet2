@@ -1,0 +1,250 @@
+openapi: 3.2.0
+info:
+  title: Internet2 Co Group Members.json API
+  version: 0.4.0
+  contact:
+    name: COmanage Project
+    url: https://spaces.at.internet2.edu/display/COmanage/About+the+COmanage+Project
+    email: comanage-users@internet2.edu
+  license:
+    name: APACHE LICENSE, VERSION 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  description: 'Operations tagged Co Group Members.json across 2 of this provider''s published API definitions: internet2-restapiv1-openapi.yml, comanage-registry-restapiv1.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://localhost/registry
+  description: 'Most deployments serve Registry using the default path /registry. If your deployment changes the
+
+    default path you must adjust the relative URIs.
+
+    '
+security:
+- basicAuth: []
+tags:
+- name: Co Group Members.json
+paths:
+  /co_group_members.json:
+    get:
+      summary: Retrieve existing group memberships
+      description: 'Retrieve existing group memberships for the `CoGroup` with ID `cogroupid`,
+
+        or for the CO Person with ID `copersonid`.
+
+
+        With no query string parameter retrieve all existing group memberships
+
+        across all groups and COs (requires platform administrator privileges).'
+      operationId: getCoGroupMembers
+      tags:
+      - Co Group Members.json
+      parameters:
+      - name: cogroupid
+        in: query
+        schema:
+          type: integer
+        description: 'Retrieve `CoGroupMember` objects attached to the CoGroup with ID `cogroupid`.
+
+          '
+        examples:
+          cogroupid-example:
+            value: /co_group_members.json?cogroupid=20
+            summary: Retrieve CoGroupMember objects for the CoGroup with ID 20
+      - name: copersonid
+        in: query
+        schema:
+          type: integer
+        description: 'Retrieve `CoGroupMember` objects attached to the CoPerson with ID `copersonid`.
+
+          '
+        examples:
+          cogroupid-example:
+            value: /co_group_members.json?copersonid=20
+            summary: Retrieve CoGroupMember objects for the CoPerson with ID 20
+      responses:
+        '200':
+          description: CoGroupMember returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoGroupMembersResponseType'
+        '401':
+          description: Authentication required.
+        '404':
+          description: ID `cogroupid` or `copersonid` not found.
+        '500':
+          description: Unknown error.
+    post:
+      summary: Add a member to a group
+      description: 'Add a member and/or owner to a `CoGroup` by creating a new
+
+        `CoGroupMember` object.'
+      operationId: addCoGroupMember
+      tags:
+      - Co Group Members.json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CoGroupMembersRequestType'
+      responses:
+        '201':
+          description: CoGroupMember added
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ResponseType:
+                    type: string
+                    enum:
+                    - NewObject
+                  Version:
+                    type: string
+                    enum:
+                    - '1.0'
+                  ObjectType:
+                    type: string
+                    enum:
+                    - CoGroupMember
+                  Id:
+                    type: string
+                    example: '100'
+        '400':
+          description: CoGroupMember Request not provided in POST body or an error in one or more provided fields.
+        '401':
+          description: Authentication required.
+        '403':
+          description: The specififed CoGroup or CoPerson does not exist, or the CoPerson is already a member of the CoGroup.
+        '500':
+          description: Unknown error.
+    servers:
+    - url: https://localhost/registry
+      description: 'Most deployments serve Registry using the default path /registry. If your deployment changes the
+
+        default path you must adjust the relative URIs.
+
+        '
+components:
+  schemas:
+    CoGroupMemberResponse:
+      type: object
+      required:
+      - Version
+      - Id
+      - CoGroupId
+      - Person
+      - Member
+      - Owner
+      properties:
+        Version:
+          type: string
+          enum:
+          - '1.0'
+        Id:
+          type: string
+          example: '279'
+        CoGroupId:
+          type: string
+          example: '40'
+        Person:
+          type: object
+          properties:
+            Type:
+              type: string
+              enum:
+              - CO
+              example: CO
+            Id:
+              type: string
+              example: '421'
+        Member:
+          type: boolean
+          example: true
+        Owner:
+          type: boolean
+          example: true
+        ValidFrom:
+          type: string
+          example: '2024-03-22 05:00:00'
+        ValidThrough:
+          type: string
+          example: '2024-04-01 04:59:59'
+    CoGroupMembersResponseType:
+      type: object
+      properties:
+        ResponseType:
+          type: string
+          enum:
+          - CoGroupMembers
+        Version:
+          type: string
+          enum:
+          - '1.0'
+        CoGroupMembers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CoGroupMemberResponse'
+    CoGroupMembersRequestType:
+      type: object
+      properties:
+        RequestType:
+          type: string
+          enum:
+          - CoGroupMembers
+        Version:
+          type: string
+          enum:
+          - '1.0'
+        CoGroupMembers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CoGroupMemberRequest'
+    CoGroupMemberRequest:
+      type: object
+      required:
+      - Version
+      - CoGroupId
+      - Person
+      - Member
+      - Owner
+      properties:
+        Version:
+          type: string
+          enum:
+          - '1.0'
+        CoGroupId:
+          type: string
+          example: '20'
+        Person:
+          type: object
+          properties:
+            Type:
+              type: string
+              enum:
+              - CO
+              example: CO
+            Id:
+              type: string
+              example: '12'
+        Member:
+          type: boolean
+          example: true
+        Owner:
+          type: boolean
+          example: false
+        ValidFrom:
+          type: string
+          example: '2024-03-22 05:00:00'
+        ValidThrough:
+          type: string
+          example: '2024-04-01 04:59:59'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+externalDocs:
+  description: COmanage Registry REST API v1
+  url: https://spaces.at.internet2.edu/display/COmanage/REST+API+v1
+x-refined-from:
+- internet2-restapiv1-openapi.yml
+- comanage-registry-restapiv1.yml

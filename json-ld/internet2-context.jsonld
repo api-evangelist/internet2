@@ -1,0 +1,171 @@
+{
+  "@context": {
+    "@vocab": "https://internet2.edu/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "internet2": "https://internet2.edu/schema#",
+    "CoGroupRequest": "internet2:CoGroupRequest",
+    "Version": {
+      "@id": "internet2:Version",
+      "@type": "xsd:string"
+    },
+    "CoId": {
+      "@id": "internet2:CoId",
+      "@type": "xsd:string"
+    },
+    "Name": {
+      "@id": "internet2:Name",
+      "@type": "xsd:string"
+    },
+    "Description": {
+      "@id": "internet2:Description",
+      "@type": "xsd:string"
+    },
+    "Open": {
+      "@id": "internet2:Open",
+      "@type": "xsd:boolean"
+    },
+    "Status": {
+      "@id": "internet2:Status",
+      "@type": "xsd:string"
+    },
+    "CouId": {
+      "@id": "internet2:CouId",
+      "@type": "xsd:string"
+    },
+    "CoGroupResponse": "internet2:CoGroupResponse",
+    "Id": {
+      "@id": "internet2:Id",
+      "@type": "xsd:string"
+    },
+    "GroupType": {
+      "@id": "internet2:GroupType",
+      "@type": "xsd:string"
+    },
+    "Auto": {
+      "@id": "internet2:Auto",
+      "@type": "xsd:boolean"
+    },
+    "NestingModeAll": {
+      "@id": "internet2:NestingModeAll",
+      "@type": "xsd:boolean"
+    },
+    "Created": {
+      "@id": "internet2:Created",
+      "@type": "xsd:string"
+    },
+    "Modified": {
+      "@id": "internet2:Modified",
+      "@type": "xsd:string"
+    },
+    "Revision": {
+      "@id": "internet2:Revision",
+      "@type": "xsd:string"
+    },
+    "Deleted": {
+      "@id": "internet2:Deleted",
+      "@type": "xsd:boolean"
+    },
+    "Actoridentifier": {
+      "@id": "internet2:Actoridentifier",
+      "@type": "xsd:string"
+    },
+    "CoGroupsRequestType": "internet2:CoGroupsRequestType",
+    "RequestType": {
+      "@id": "internet2:RequestType",
+      "@type": "xsd:string"
+    },
+    "CoGroups": {
+      "@id": "internet2:CoGroups",
+      "@container": "@list"
+    },
+    "CoGroupsResponseType": "internet2:CoGroupsResponseType",
+    "ResponseType": {
+      "@id": "internet2:ResponseType",
+      "@type": "xsd:string"
+    },
+    "CoGroupMemberRequest": "internet2:CoGroupMemberRequest",
+    "CoGroupId": {
+      "@id": "internet2:CoGroupId",
+      "@type": "xsd:string"
+    },
+    "Person": {
+      "@id": "internet2:Person"
+    },
+    "Member": {
+      "@id": "internet2:Member",
+      "@type": "xsd:boolean"
+    },
+    "Owner": {
+      "@id": "internet2:Owner",
+      "@type": "xsd:boolean"
+    },
+    "ValidFrom": {
+      "@id": "internet2:ValidFrom",
+      "@type": "xsd:string"
+    },
+    "ValidThrough": {
+      "@id": "internet2:ValidThrough",
+      "@type": "xsd:string"
+    },
+    "CoGroupMemberResponse": "internet2:CoGroupMemberResponse",
+    "CoGroupMembersRequestType": "internet2:CoGroupMembersRequestType",
+    "CoGroupMembers": {
+      "@id": "internet2:CoGroupMembers",
+      "@container": "@list"
+    },
+    "CoGroupMembersResponseType": "internet2:CoGroupMembersResponseType",
+    "CoPersonRequest": "internet2:CoPersonRequest",
+    "Timezone": {
+      "@id": "internet2:Timezone",
+      "@type": "xsd:string"
+    },
+    "DateOfBirth": {
+      "@id": "internet2:DateOfBirth",
+      "@type": "xsd:string"
+    },
+    "CoPersonResponse": "internet2:CoPersonResponse",
+    "CoPeopleRequestType": "internet2:CoPeopleRequestType",
+    "CoPeople": {
+      "@id": "internet2:CoPeople",
+      "@container": "@list"
+    },
+    "CoPeopleResponseType": "internet2:CoPeopleResponseType",
+    "EmailAddressRequest": "internet2:EmailAddressRequest",
+    "Mail": {
+      "@id": "internet2:Mail",
+      "@type": "xsd:string"
+    },
+    "Type": {
+      "@id": "internet2:Type",
+      "@type": "xsd:string"
+    },
+    "Verified": {
+      "@id": "internet2:Verified",
+      "@type": "xsd:boolean"
+    },
+    "EmailAddressResponse": "internet2:EmailAddressResponse",
+    "SourceEmailAddressId": {
+      "@id": "internet2:SourceEmailAddressId",
+      "@type": "xsd:string"
+    },
+    "ActorIdentifier": {
+      "@id": "internet2:ActorIdentifier",
+      "@type": "xsd:string"
+    },
+    "EmailAddressesRequestType": "internet2:EmailAddressesRequestType",
+    "EmailAddresses": {
+      "@id": "internet2:EmailAddresses",
+      "@container": "@list"
+    },
+    "EmailAddressesResponseType": "internet2:EmailAddressesResponseType"
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "Internet2 API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects Internet2's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-10-13) from openapi/comanage-registry-restapiv1.yml.",
+  "dcterms:created": "2026-10-13",
+  "dcterms:source": [
+    "openapi/comanage-registry-restapiv1.yml"
+  ]
+}
