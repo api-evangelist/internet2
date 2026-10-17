@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Internet2 Co Groups API
-  version: 0.4.0
+  title: COmanage Registry REST API v1 Co Groups API
+  description: A collection of lower level APIs providing table level access to the COmanage Registry Data Model.
   contact:
     name: COmanage Project
     url: https://spaces.at.internet2.edu/display/COmanage/About+the+COmanage+Project
@@ -9,7 +9,7 @@ info:
   license:
     name: APACHE LICENSE, VERSION 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  description: 'Operations tagged Co Groups across 2 of this provider''s published API definitions: internet2-restapiv1-openapi.yml, comanage-registry-restapiv1.yml. Each path carries the servers of the definition it was published in.'
+  version: 0.4.0
 servers:
 - url: https://localhost/registry
   description: 'Most deployments serve Registry using the default path /registry. If your deployment changes the
@@ -125,13 +125,6 @@ paths:
           description: id not found for object.
         '500':
           description: Unknown error.
-    servers:
-    - url: https://localhost/registry
-      description: 'Most deployments serve Registry using the default path /registry. If your deployment changes the
-
-        default path you must adjust the relative URIs.
-
-        '
   /co_groups/reconcile.json:
     put:
       summary: Reconcile all group memberships
@@ -160,13 +153,6 @@ paths:
           description: The specified CO does not exist.
         '500':
           description: Unknown error.
-    servers:
-    - url: https://localhost/registry
-      description: 'Most deployments serve Registry using the default path /registry. If your deployment changes the
-
-        default path you must adjust the relative URIs.
-
-        '
   /co_groups/reconcile/{id}.json:
     post:
       summary: Reconcile memberships for one group
@@ -194,45 +180,8 @@ paths:
           description: Authentication required.
         '500':
           description: Unknown error.
-    servers:
-    - url: https://localhost/registry
-      description: 'Most deployments serve Registry using the default path /registry. If your deployment changes the
-
-        default path you must adjust the relative URIs.
-
-        '
 components:
   schemas:
-    CoGroupsResponseType:
-      type: object
-      properties:
-        ResponseType:
-          type: string
-          enum:
-          - CoGroups
-        Version:
-          type: string
-          enum:
-          - '1.0'
-        CoGroups:
-          type: array
-          items:
-            $ref: '#/components/schemas/CoGroupResponse'
-    CoGroupsRequestType:
-      type: object
-      properties:
-        RequestType:
-          type: string
-          enum:
-          - CoGroups
-        Version:
-          type: string
-          enum:
-          - '1.0'
-        CoGroups:
-          type: array
-          items:
-            $ref: '#/components/schemas/CoGroupRequest'
     CoGroupResponse:
       type: object
       required:
@@ -344,6 +293,36 @@ components:
         CouId:
           type: string
           example: '7'
+    CoGroupsRequestType:
+      type: object
+      properties:
+        RequestType:
+          type: string
+          enum:
+          - CoGroups
+        Version:
+          type: string
+          enum:
+          - '1.0'
+        CoGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/CoGroupRequest'
+    CoGroupsResponseType:
+      type: object
+      properties:
+        ResponseType:
+          type: string
+          enum:
+          - CoGroups
+        Version:
+          type: string
+          enum:
+          - '1.0'
+        CoGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/CoGroupResponse'
   securitySchemes:
     basicAuth:
       type: http
@@ -351,6 +330,3 @@ components:
 externalDocs:
   description: COmanage Registry REST API v1
   url: https://spaces.at.internet2.edu/display/COmanage/REST+API+v1
-x-refined-from:
-- internet2-restapiv1-openapi.yml
-- comanage-registry-restapiv1.yml

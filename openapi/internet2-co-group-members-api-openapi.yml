@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Internet2 Co Group Members API
-  version: 0.4.0
+  title: COmanage Registry REST API v1 Co Group Members API
+  description: A collection of lower level APIs providing table level access to the COmanage Registry Data Model.
   contact:
     name: COmanage Project
     url: https://spaces.at.internet2.edu/display/COmanage/About+the+COmanage+Project
@@ -9,7 +9,7 @@ info:
   license:
     name: APACHE LICENSE, VERSION 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  description: 'Operations tagged Co Group Members across 2 of this provider''s published API definitions: internet2-restapiv1-openapi.yml, comanage-registry-restapiv1.yml. Each path carries the servers of the definition it was published in.'
+  version: 0.4.0
 servers:
 - url: https://localhost/registry
   description: 'Most deployments serve Registry using the default path /registry. If your deployment changes the
@@ -125,15 +125,62 @@ paths:
           description: id not found for object.
         '500':
           description: Unknown error.
-    servers:
-    - url: https://localhost/registry
-      description: 'Most deployments serve Registry using the default path /registry. If your deployment changes the
-
-        default path you must adjust the relative URIs.
-
-        '
 components:
   schemas:
+    CoGroupMemberRequest:
+      type: object
+      required:
+      - Version
+      - CoGroupId
+      - Person
+      - Member
+      - Owner
+      properties:
+        Version:
+          type: string
+          enum:
+          - '1.0'
+        CoGroupId:
+          type: string
+          example: '20'
+        Person:
+          type: object
+          properties:
+            Type:
+              type: string
+              enum:
+              - CO
+              example: CO
+            Id:
+              type: string
+              example: '12'
+        Member:
+          type: boolean
+          example: true
+        Owner:
+          type: boolean
+          example: false
+        ValidFrom:
+          type: string
+          example: '2024-03-22 05:00:00'
+        ValidThrough:
+          type: string
+          example: '2024-04-01 04:59:59'
+    CoGroupMembersResponseType:
+      type: object
+      properties:
+        ResponseType:
+          type: string
+          enum:
+          - CoGroupMembers
+        Version:
+          type: string
+          enum:
+          - '1.0'
+        CoGroupMembers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CoGroupMemberResponse'
     CoGroupMemberResponse:
       type: object
       required:
@@ -177,21 +224,6 @@ components:
         ValidThrough:
           type: string
           example: '2024-04-01 04:59:59'
-    CoGroupMembersResponseType:
-      type: object
-      properties:
-        ResponseType:
-          type: string
-          enum:
-          - CoGroupMembers
-        Version:
-          type: string
-          enum:
-          - '1.0'
-        CoGroupMembers:
-          type: array
-          items:
-            $ref: '#/components/schemas/CoGroupMemberResponse'
     CoGroupMembersRequestType:
       type: object
       properties:
@@ -207,45 +239,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CoGroupMemberRequest'
-    CoGroupMemberRequest:
-      type: object
-      required:
-      - Version
-      - CoGroupId
-      - Person
-      - Member
-      - Owner
-      properties:
-        Version:
-          type: string
-          enum:
-          - '1.0'
-        CoGroupId:
-          type: string
-          example: '20'
-        Person:
-          type: object
-          properties:
-            Type:
-              type: string
-              enum:
-              - CO
-              example: CO
-            Id:
-              type: string
-              example: '12'
-        Member:
-          type: boolean
-          example: true
-        Owner:
-          type: boolean
-          example: false
-        ValidFrom:
-          type: string
-          example: '2024-03-22 05:00:00'
-        ValidThrough:
-          type: string
-          example: '2024-04-01 04:59:59'
   securitySchemes:
     basicAuth:
       type: http
@@ -253,6 +246,3 @@ components:
 externalDocs:
   description: COmanage Registry REST API v1
   url: https://spaces.at.internet2.edu/display/COmanage/REST+API+v1
-x-refined-from:
-- internet2-restapiv1-openapi.yml
-- comanage-registry-restapiv1.yml
